@@ -1,0 +1,24 @@
+{% extends "merlin/base.html" %}
+
+{% block title %}My Bird List{% endblock %}
+
+{% block content %}
+    <h1>My Bird List</h1>
+    {% for bird in birds %}
+        <h2>{{ bird.common_name }}</h2>
+        <ul>
+            <li>
+                Species: <span class="species">{{ bird.genus }} {{ bird.species }}</span>
+            </li>
+            <li>
+                Family: {{ bird.family }}
+            </li>
+            <li>
+                Order: {{ bird.family.order }}
+            </li>
+            <li>
+                Cornell Link: <a href="{{ bird.link }}">{{ bird.common_name }}</a>
+            </li>
+        </ul>
+    {% endfor %}
+{% endblock %}

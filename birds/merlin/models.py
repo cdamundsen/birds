@@ -96,7 +96,7 @@ class Detection(models.Model):
     )
 
     def __str__(self):
-        return f"{self.date}: {self.bird.common_name}"
+        return f"{self.date}: {self.bird.common_name}, {self.location.name}"
 
     class Meta:
         indexes = [

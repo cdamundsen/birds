@@ -1,0 +1,26 @@
+{% extends "merlin/base.html" %}
+
+{% block title %}
+    My Orders
+{% endblock %}
+
+{% block content %}
+    <h1>My Orders</h1>
+    {% for order in orders %}
+        <h2>{{ order.name }}</h2>
+        <ul>
+            {% for family in order.families.all %}
+                <li>
+                    {{ family.name }}
+                    <ul>
+                        {% for bird in family.birds.all %}
+                            <li>
+                                {{ bird.common_name }} (<i>{{ bird.genus }} {{ bird.species }}</i>)
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+{% endblock %}

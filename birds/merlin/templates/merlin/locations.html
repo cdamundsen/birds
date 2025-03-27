@@ -1,0 +1,17 @@
+{% extends "merlin/base.html" %}
+
+{% block title %}
+    My Locations
+{% endblock %}
+
+{% block content %}
+    <h1>My Locations</h1>
+    {% for location in locations %}
+        <h2>{{ location.name }}</h2>
+        <p>
+            {% if location.description  %}
+                {{ location.description }}
+            {% endif %}
+        </p>
+    {% endfor %}
+{% endblock %}
