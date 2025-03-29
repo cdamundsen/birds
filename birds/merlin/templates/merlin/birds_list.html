@@ -5,7 +5,9 @@
 {% block content %}
     <h1>My Bird List</h1>
     {% for bird in birds %}
-        <h2>{{ bird.common_name }}</h2>
+        <h2>
+            <a href="{{ bird.get_absolute_url }}">{{ bird.common_name }}</a>
+        </h2>
         <ul>
             <li>
                 Species: <span class="species">{{ bird.genus }} {{ bird.species }}</span>

@@ -1,0 +1,22 @@
+{% extends "merlin/base.html" %}
+
+{% block title %}
+    {{ bird.common_name }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ bird.common_name }}</h1>
+    <ul>
+        <li>Species: <span class="species">{{ bird.genus }} {{ bird.species }}</span></li>
+        <li>Order: {{ bird.family.order.name }}</li>
+        <li>Family: {{ bird.family.name }}</li>
+        <li>Cornell link: <a href={{ bird.link }}>{{ bird.common_name }}</a></li>
+    </ul>
+    <h2>Detections</h2>
+    <p>Detected {{ detections.count }} time{{ detections.count|pluralize }}</p>
+    <ul>
+        {% for detection in detections %}
+            <li>{{ detection.date }} in {{ detection.location.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

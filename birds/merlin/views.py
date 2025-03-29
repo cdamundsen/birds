@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from .models import Bird, Location, Order
+from django.shortcuts import get_object_or_404, render
+#from django.contrib.auth.decorators import login_required
+from .models import Detection, Bird, Location, Order
 
 # Create your views here.
 def birds_list(request):
@@ -31,5 +32,19 @@ def orders(request):
         'merlin/orders.html',
         { 
             'orders': orders,
+        }
+    )
+def bird(request, bird_slug):
+    bird = get_object_or_404(
+        Bird,
+        slug=bird_slug
+    )
+    detections = bird.detections.all().order_by('date')
+    return render(
+        request,
+        'merlin/bird.html',
+        {
+            'bird': bird,
+            'detections': detections,
         }
     )

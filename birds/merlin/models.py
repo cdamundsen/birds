@@ -1,4 +1,6 @@
+from django.conf import settings
 from django.db import models
+from django.urls import reverse
 
 class Order(models.Model):
     name = models.CharField(
@@ -57,6 +59,19 @@ class Bird(models.Model):
         blank=True,
         null=True
     )
+    photo = models.ImageField(
+        upload_to='merlin/static/images/',
+        blank=True,
+        null=True
+    )
+
+    def get_absolute_url(self):
+        return reverse(
+            'merlin:bird',
+            args=[
+                self.slug
+            ]
+        )
 
     def __str__(self):
         return self.common_name

@@ -4,7 +4,7 @@ from .models import Bird, Detection, Family, Location, Order
 # Register your models here.
 @admin.register(Bird)
 class BirdAdmin(admin.ModelAdmin):
-    list_display = ['common_name', 'slug', 'genus', 'species', 'link']
+    list_display = ['common_name', 'slug', 'genus', 'species', 'link', 'photo']
     list_filter = ['genus']
     search_fields = ['common_name', 'genus', 'species']
     prepopulated_fields = {'slug': ('common_name',)}
